@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/8455628105.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="position: fixed;">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="font-size: 18px;font-weight: bold;font-style:italic;display:inline-block;">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Categories", "Products", "Home")</li>
+                    <li>@Html.ActionLink("Cart", "Cart", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav" style="display: inline-block; font-size: 18px;font-weight: bold;font-style:italic;float: right;">
+                    <li onclick="sidenav()"><a href="#">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="side" id="side">
+        <div class="closediv" onclick="sideclose()">
+            <label class="close">X</label>
+        </div><br /><br />
+        <img src="~/Content/Images/user.png" /><br />
+        <h4>@ViewBag.UserName</h4>
+        <hr>
+        <div class="container">
+            <form method="get">
+                <button type="submit" formaction="/Home/Account" class="btn btn-dark btn-lg btn-block h3">Profile</button>
+                <button type="submit" formaction="/Home/YourOrder" class="btn btn-dark btn-lg btn-block h3">Your Order</button>
+                <button type="submit" formaction="/Home/PastOrder" class="btn btn-dark btn-lg btn-block h3">Past Order</button>
+                <button type="submit" formaction="/Home/Cart" class="btn btn-dark btn-lg btn-block h3">Your Cart</button>
+                <button type="submit" formaction="/Home/Login" class="btn btn-dark btn-lg btn-block h3">@ViewBag.Signbtn</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function sidenav()
+        {
+            document.getElementById("side").style.transform = "translateX(250px)";
+        }
+        function sideclose()
+        {
+            document.getElementById("side").style.transform = "translateX(-250px)";
+        }
+    </script>
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

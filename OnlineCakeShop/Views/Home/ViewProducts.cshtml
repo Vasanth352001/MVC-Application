@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "ViewProducts";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLogin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="~/Scripts/LoginForm.js"></script>
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+</head>
+<body>
+
+    <br />
+    <div class="card bg-dark text-white" style="margin-left: 280px; margin-right: 10px; border-radius: 10px 10px 0 0;">
+        <div class="card-body" style="display: inline-flex;">
+            <h4 style="font-size:25px; font-weight: bold;">Products</h4>
+            <div class="dropdown show" style="margin-left: 50%;">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item"  href="AdminViewChocolate">Chocolate Cake</a>
+                    <a class="dropdown-item" href="AdminViewBlackForest">Black Forest Cake</a>
+                    <a class="dropdown-item" href="AdminViewIcecream">Ice Cream Cake</a>
+                    <a class="dropdown-item" href="AdminViewButterscotch">Butterscotch Cake</a>
+                    <a class="dropdown-item" href="AdminViewCup">Cupcake</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="margin-left:280px; margin-right:10px;">
+        <div class="card-body">
+            <table class="table table-light table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">S.no</th>
+                        <th scope="col" class="text-center">Cake</th>
+                        <th scope="col" class="text-center">Details</th>
+                        <th scope="col" class="text-center">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.Products != null)
+                    {
+                        int i = 1;
+                        foreach (var cake in ViewBag.Products)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    <img src=@cake["URL"] class="img-fluid img-rounded mx-auto d-block" style="max-width:120px;height:auto;" />
+                                </td>
+                                <td>
+                                    <table class="table table-dark table-striped text-center" style="margin-left:100px;width: 300px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>Category</td>
+                                                <td>@cake["Category"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>@cake["Name"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Price</td>
+                                                <td>Rs.@cake["Price"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Stock</td>
+                                                <td>@cake["Stock"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Offer</td>
+                                                <td>@cake["Offer"]%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <form method="post" action="EditProduct">
+                                        <select name="URL" style="display:none;"><option>@cake["URL"]</option></select>
+                                        <input type="submit" value="Edit" id="viewbtn" />
+                                    </form>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+

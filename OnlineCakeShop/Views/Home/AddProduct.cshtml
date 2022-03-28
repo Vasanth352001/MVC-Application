@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/Admin.css" />
+    <script src="~/Scripts/Javascript/Admin.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm("AddProduct", "Home")) 
+    {
+        <br />
+        <div class="card bg-dark text-white" style="margin:0px 23.5%;border-radius:10px 10px 0 0; width: 900px;">
+            <div class="card-body">
+                <h5>Add New Product</h5>
+            </div>
+        </div>
+        <div class="card" style="margin:0px 23.5%;width:900px" onmouseover="validate()">
+            <div class="card-body">
+                <br />
+                <div class="card bg-light text-danger">
+                    <div class="card-body">
+                        <h5 style="font-weight: bold; font-style: italic; font-size: 18px;">@ViewBag.AddError</h5>
+                    </div>
+                </div><br />
+                <select id="category" name="Category" class="form-select form-select-sm mb-3 text-secondary" aria-label=".form-select-lg example" style="height: 45px;font-size: 16px;">
+                    <option selected>Category</option>
+                    <option>Chocolate_Cake</option>
+                    <option>BlackForest_Cake</option>
+                    <option>Icecream_Cake</option>
+                    <option>Butterscotch_Cake</option>
+                    <option>Cup_Cake</option>
+                </select>
+                <label class="form-check-label text-danger" for="flexCheckDefault" id="categoryerror"></label><br />
+                <div class="mb-3 input-group input-group-sm" id="nameval">
+                    <input type="text" class="form-control" id="name" name="Name" placeholder="Cake Name">
+                </div>
+                <label class="form-check-label text-danger" for="flexCheckDefault" id="nameerror"></label><br />
+                <div class="mb-3 input-group input-group-sm" id="priceval">
+                    <input type="text" class="form-control" id="price" name="Price" placeholder="Price">
+                </div>
+                <label class="form-check-label text-danger" for="flexCheckDefault" id="priceerror"></label><br />
+                <div class="mb-3 input-group input-group-sm" id="stockval">
+                    <input type="text" class="form-control" id="stock" name="Stock" placeholder="Stock">
+                </div>
+                <label class="form-check-label text-danger" for="flexCheckDefault" id="stockerror"></label><br />
+                <div class="mb-3 input-group input-group-sm" id="offerval">
+                    <input type="text" class="form-control" id="offer" name="Offer" placeholder="Offer">
+                </div>
+                <label class="form-check-label text-danger" for="flexCheckDefault" id="offererror"></label><br />
+                <div class="mb-3 input-group input-group-sm" id="urlval">
+                    <input type="text" class="form-control" id="url" name="URL" placeholder="URL">
+                </div>
+                <label class="form-check-label" for="flexCheckDefault" id="urlerror" style="color: red;"></label>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" disabled id="addbtn">Add New</button>
+                </div><br />
+            </div>
+        </div>
+    }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+﻿body 
+{
+    background: #ece5da;
+    font-family: 'Raleway', sans-serif;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th
+{
+    border: none;
+}
+
+.card
+{
+    margin-top:60px;
+}
+

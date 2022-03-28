@@ -1,0 +1,246 @@
+﻿body {
+    padding-bottom: 20px;
+    background-color: lightyellow;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+.card
+{
+    margin-top: 60px;
+    background-color: lightyellow;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th
+{
+    border: none;
+}
+
+.side
+{
+    height: 100%;
+    width: 250px;
+    background-color:rgb(101, 223, 231);
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    padding: 10px 0px;
+    overflow-x: visible;
+    z-index: 1;
+    position: fixed;
+    margin-left: -250px;
+    transition: transform 0.6s;
+    
+}
+
+.side .closediv
+{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color:dimgray;
+    float: right;
+    text-align: center;
+    margin-top: -10px;
+    cursor: pointer;
+}
+.side .closediv .close
+{
+    font-style: normal;
+    color: white;
+    text-align: center;
+    margin-right: 7px;
+    margin-top: 5px;
+}
+
+.side .closediv .close:hover
+{
+    color: black;
+}
+
+.side label
+{
+    color: black;
+}
+
+.side input[type="submit"]
+{
+    width: 80%;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    background: radial-gradient(rgb(245, 159, 245),rgb(75, 75, 252));
+    border: 2px solid rgb(147, 147, 245);
+    transition: transform 0.3s;
+}
+
+.side input[type="submit"]:hover
+{
+    background:black;
+    color: whitesmoke;
+    transform: translateX(15px);
+    border-radius:10px;
+}
+
+.side img
+{
+    width:100px;
+    height:100px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+/* Single Product Start*/
+.wrapper
+{
+    height:290px;
+    display: flex;
+    overflow-x: auto;
+    margin-top: 50px;
+    color: black;
+    font-size: 13px;
+}
+
+.wrapper .item
+{
+    min-width: 120px;
+    height: 200px;
+    margin: 25px 50px;
+}
+
+.wrapper .item img
+{
+    width: 120px;
+    height: 160px;
+}
+/* Single Product End*/
+
+/*Home Page Start*/
+.footer
+{
+    margin-top: 20px;
+}
+.footer .container
+{
+    max-width: 1167px;
+    margin-left: 50px;
+}
+
+.footer .container .row
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul
+{
+    list-style: none;
+}
+
+.footer
+{
+    background-color: #24262b;
+    padding: 70px 0px;
+}
+
+.footer .container .row .footer-col
+{
+    width: 20%;
+    padding: 0 15px;
+}
+
+.footer .container .row .footer-col h4
+{
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+    margin-left: 30px;
+}
+
+.footer .container .row .footer-col h4::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer .container .row .footer-col ul li:not(:last-child)
+{
+    margin-bottom: 10px;
+
+}
+
+.footer .container .row .footer-col ul li a
+{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer .container .row .footer-col ul li a:hover
+{
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+.footer .container .row .footer-col .social-links a
+{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 1px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.footer .container .row .footer-col .social-links a:hover
+{
+    color: #24262b;
+    background-color: #ffffff;
+}
+/*Home Page End*/

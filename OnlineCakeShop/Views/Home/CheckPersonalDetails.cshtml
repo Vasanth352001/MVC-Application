@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "CheckPersonalDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8455628105.js" crossorigin="anonymous"></script>
+    <link href="~/Content/PersonalDetails.css" rel="stylesheet" />
+    <script src="~/Scripts/Javascript/Order.js"></script>
+</head>
+<body>
+    <div class="container" style="margin-top: 60px;">
+        <div class="row mt-3 mx-3" style="background-image: linear-gradient(to left,rgba(52, 214, 235),rgba(52, 73, 235));">
+            <div class="col-md-3">
+                <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
+                    <i id="animationDemo" data-mdb-animation="slide-right" data-mdb-toggle="animation"
+                       data-mdb-animation-reset="true" data-mdb-animation-start="onScroll"
+                       data-mdb-animation-on-scroll="repeat" class="fas fa-3x fa-shipping-fast text-white"></i>
+                    <h3 class="mt-3 text-white">Welcome</h3>
+                    <p class="white-text">You are 30 seconds away from compleating your order!</p>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-white btn-rounded back-button">Go back</button>
+                </div>
+            </div>
+            <div class="col-md-9 justify-content-center">
+                <div class="card card-custom pb-4">
+                    <div class="card-body mt-0 mx-5">
+                        <div class="text-center mb-3 pb-2 mt-3">
+                            <h4 style="color: #495057 ;">Delivery Details</h4>
+                        </div>
+
+                        <form class="mb-0" style="font-size: 12px; font-weight: bold;" method="post" onmouseover="AddressValidate()">
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="name" name="Customername" class="form-control input-custom" placeholder="Customer Name" />
+                                        <label class="form-label" id="nameerror"></label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="phone" name="Phonenumber" class="form-control input-custom" placeholder="Phone Number" />
+                                        <label class="form-label" id="errorphonenumber"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="doorno" name="Doorno" class="form-control input-custom" placeholder="Door No" />
+                                        <label class="form-label" id="errordoorno"></label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="streat" name="Streat" class="form-control input-custom" placeholder="Streat Name" />
+                                        <label class="form-label" id="errorstreat"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="area" name="Area" class="form-control input-custom" placeholder="Area Name" />
+                                        <label class="form-label" id="errorarea"></label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <select id="district" name="District" class="form-select form-select-sm mb-3 text-secondary" style="width: 100%;height: 30px;">
+                                        <option>District</option>
+                                        <option>Tiruppur</option>
+                                        <option>Coimbatore</option>
+                                        <option>Dharapuram</option>
+                                        <option>Erode</option>
+                                    </select>
+                                    <label class="form-label" id="errordistrict"></label>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="pincode" name="Pincode" class="form-control input-custom" placeholder="Pincode" />
+                                        <label class="form-label" id="errorpincode"></label>
+                                    </div>
+                                </div> 
+                                <div class="col">
+                                    <select id="state" name="State" class="form-select form-select-sm mb-3 text-secondary" style="width: 100%;height: 30px;">
+                                        <option>Tamilnadu</option>
+                                    </select>
+                                    <label class="form-label" id="errorstate"></label>
+                                </div>
+                            </div>
+                            <button type="submit" class="button" id="personalbtn" formaction="CheckPersonalDetails" disabled>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/Admin.js"></script>
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+</head> 
+<body onload="open()">
+    <div class="side bg-dark">
+        <img src="~/Content/Images/user.png" /><br />
+        <label>@ViewBag.AdminName</label>
+        <hr style="background-color: white;">
+        <hr style="background-color: white;">
+        <form method="get">
+            <button type="submit" formaction="AdminHome" id="add">
+                <img src="~/Content/Images/dashboard.png" style="width: 20px;height: 20px;"  />
+                DashBoard
+            </button>
+            <button type="submit" formaction="AddProduct" id="add">
+                <img src="~/Content/Images/add-button.png" style="width: 20px;height: 20px;"  />
+                New Products
+            </button>
+            <button type="submit" formaction="ViewProducts">
+                <img src="~/Content/Images/cubes.png" style="width: 20px;height: 20px;"  />
+                Products
+            </button>
+            <button type="submit" formaction="AdminViewOrders">
+                <img src="~/Content/Images/order.png" style="width: 20px;height: 20px;"  />
+                Orders
+            </button>
+            <button type="submit" formaction="AdminViewCustomers">
+                <img src="~/Content/Images/customer.png" style="width: 20px;height: 20px;"  />
+                Customers
+            </button>
+            <button type="submit" formaction="AdminViewPastOrders">
+                <img src="~/Content/Images/history.png" style="width: 20px;height: 20px;"  />
+                Past Orders
+            </button>
+            <button type="submit" id="logbtn" formaction="Login">
+                <img src="~/Content/Images/log-out.png" style="width: 20px;height: 20px;"  />
+                Sign Out
+            </button>
+        </form>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

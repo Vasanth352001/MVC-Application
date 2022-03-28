@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="margin-top: 60px;">
+        <div class="card" style="margin-top: 50px; font-size: 18px;">
+            <div class="card-body bg-dark text-white">
+                Your Cart
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.no</th>
+                            <th scope="col">Cake</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.CartProducts != null)
+                        {
+                            int i = 1;
+                            foreach (var cake in ViewBag.CartProducts)
+                            {
+                                <tr>
+                                    <th scope="row">@i</th>
+                                    <td>
+                                        @using (Html.BeginForm("SingleProduct", "Home"))
+                                        {
+                                            <select name="URL" style="display: none;"><option>@cake["URL"]</option></select>
+                                            <button class="btn btn-default">
+                                                <img src=@cake["Url"] class="img-responsive" style="width: 100px; height: 130px;" />
+                                            </button>
+                                        }
+                                    </td>
+                                    <td>
+                                        <h3 style="font-weight: bold;">@cake["Name"]</h3><br />
+                                        @cake["Offer"]% Offer!!<br /><br />
+                                        @using (Html.BeginForm("RemoveCartProduct", "Home"))
+                                        {
+                                            <select name="URL" style="display: none;"><option>@cake["URL"]</option></select>
+                                            <button type="submit" class="btn btn-info btn-lg font-weight-bold font-italic">Remove</button>
+                                        }
+                                    </td>
+                                    <td>Rs.@cake["Price"]</td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

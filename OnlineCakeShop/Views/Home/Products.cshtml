@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="padding: 0px 50px; margin-top: 60px;">
+        <div class="col" style="display: inline-flex; margin-top: 30px;">
+            <div class="dropdown show" style="margin-left: 75%; margin-right: 5%; letter-spacing: 1px; height: 30px;">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="Chocolate">Chocolate Cake</a>
+                    <a class="dropdown-item" href="BlackForest">Black Forest Cake</a>
+                    <a class="dropdown-item" href="Icecream">Ice Cream Cake</a>
+                    <a class="dropdown-item" href="Butterscotch">Butterscotch Cake</a>
+                    <a class="dropdown-item" href="Cup">Cupcake</a>
+                </div>
+            </div>
+            <div class="dropdown show" style="letter-spacing: 1px; height: 30px;">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by Price
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="Above0">0-100</a>
+                    <a class="dropdown-item" href="Above100">100-400</a>
+                    <a class="dropdown-item" href="Above400">400-600</a>
+                    <a class="dropdown-item" href="Above600">600-900</a>
+                    <a class="dropdown-item" href="Above900">900 above</a>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="padding: 30px; margin-top: 30px; background-color: lightgray;">
+            <div class="card-body">
+                <div class="row">
+                    @if (ViewBag.Products != null)
+                    {
+                        foreach (var cake in ViewBag.Products)
+                        {
+                            <div class="col-md-3 col-xs-4 justify-content-between" style="margin-top: 50px;">
+                                @using (Html.BeginForm("SingleProduct", "Home"))
+                                {
+                                    <select name="URL" style="display: none;"><option>@cake["URL"]</option></select>
+                                    <button class="btn btn-default">
+                                        <img src=@cake["URL"] class="img-responsive" style="width: 170px; height: 250px;" />
+                                    </button>
+                                    <div class="det">
+                                        <h3>@cake["Name"]</h3>
+                                    </div>
+                                    <div class="det">
+                                        <h4 class="text-danger">Rs.@cake["Price"]</h4>
+                                    </div>
+                                    <div class="det">
+                                        <h4 class="text-primary">@cake["Offer"]% Offer</h4>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <h1 class="text-center" style="margin-top: 50px;">About</h1>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-xs-6 footer-col">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="#">Wedding Cake</a></li>
+                            <li><a href="#">Birthday Cake</a></li>
+                            <li><a href="#">Anniversery Cake</a></li>
+                            <li><a href="#">Pieace of Cake</a></li>
+                            <li><a href="#">New Year Cake</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-xs-6 footer-col">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Conatct us</a></li>
+                            <li><a href="#">Terms & condition</a></li>
+                            <li><a href="#">Shipping & Exchange</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-xs-6 footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="#">Address : XYZ Tirupur Tamilnady pincode 123456</a></li>
+                            <hr>
+                            <li><a href="#">Phone 9876543212</a></li>
+                            <li><a href="#">Email yummycakes@gmail.com</a></li>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+

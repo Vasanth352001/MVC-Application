@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="padding: 0px 50px;">
+        <div class="card" style="padding: 30px;">
+            <div class="card-body">
+                <h3>Page Not Found!!!</h3>
+                <p>
+                    Your page is not found.If you not signin this page,
+                    then please signin and coninue your page.
+                    <br /><br />
+                </p>
+                @Html.ActionLink("Login", "Login", "Home")
+                @Html.ActionLink("Back", "Products", "Home")
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

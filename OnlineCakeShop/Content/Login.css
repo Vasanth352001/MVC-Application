@@ -1,0 +1,26 @@
+﻿body
+{
+    margin: 0;
+    padding: 0;
+}
+.bg-image 
+{
+    background-image: url("https://wallpaperbat.com/img/179955-wallpaper-coffee-plate-cup-cake-image-for-desktop-section-ieda.jpg");
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.cont
+{
+    padding: 0px 200px;
+}
+
+.layout
+{
+    padding: 30px;
+    /*background-color: rgba(245,245,245,0);*/
+}
+
+
+

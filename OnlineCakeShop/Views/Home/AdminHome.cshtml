@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "AdminHome";
+    ViewBag.customer = "90";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap link -->
+    <script src="https://kit.fontawesome.com/8455628105.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- file link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="~/Scripts/Javascript/Admin.js"></script>
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+</head>
+<body> 
+    <div class="content">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-around">
+                        <div class="shadow-lg p-5 bg-primary rounded text-white">
+                            <header>Customers</header>
+                            <div class="row">
+                                @ViewBag.CustomerCount Customers
+                                <div class="col logo">
+                                    <img src="~/Content/Images/customer.png" />
+                                </div>
+                            </div>
+                            <div class="progress p-1">
+                                <div class="progress-bar bg-dark" role="progressbar" style="@ViewBag.customer" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="shadow-lg p-5 bg-danger rounded text-white">
+                            <header>Orders</header>
+                            <div class="row">
+                                @ViewBag.OrderCount CurrentOrders
+                                <div class="col logo">
+                                    <img src="~/Content/Images/shopping-list.png" />
+                                </div>
+                            </div>
+                            <div class="progress p-1">
+                                <div class="progress-bar bg-dark" role="progressbar" style="@ViewBag.customer" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="shadow-lg p-5 bg-info rounded text-white">
+                            <header>Products</header>
+                            <div class="row">
+                                @ViewBag.ProductCount Products
+                                <div class="col logo">
+                                    <img src="~/Content/Images/cake.png" />
+                                </div>
+                            </div>
+                            <div class="progress p-1">
+                                <div class="progress-bar bg-dark" role="progressbar" style="@ViewBag.customer" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="card bg-success text-white mt-5">
+                <div class="card-body">
+                    <h6 style="font-size:20px; font-weight: bold;">Visiters</h6>
+                </div>
+            </div><br />
+            <canvas id="myChart" style="width:100%;"></canvas>
+            <script>
+                var xValues = ["@ViewBag.Day5","@ViewBag.Day4","@ViewBag.Day3","@ViewBag.Day2","@ViewBag.Day1"];
+                var yValues = ["@ViewBag.count5","@ViewBag.count4","@ViewBag.count3","@ViewBag.count2","@ViewBag.count1"];
+
+                new Chart("myChart", {
+                    type: "line",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                            fill: false,
+                            lineTension: 0,
+                            backgroundColor: "rgba(0,0,255,1.0)",
+                            borderColor: "rgba(0,0,255,0.1)",
+                            data: yValues
+                        }]
+                    },
+                    options: {
+                        legend: { display: false },
+                        scales: {
+                            yAxes: [{ ticks: { min: 0, max: 100 } }],
+                        }
+                    }
+                });
+            </script>
+            @*<div class="chart">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h4 style="font-size:20px; font-weight: bold;">Visiters</h4>
+                    </div>
+                </div>
+                <ul class="bars">
+                    <li><div class="bar" data-percentage="@ViewBag.count5" style="height: @ViewBag.count5%;"></div><span>@ViewBag.Day5</span></li>
+                    <li><div class="bar" data-percentage="@ViewBag.count4" style="height: @ViewBag.count4%;"></div><span>@ViewBag.Day4</span></li>
+                    <li><div class="bar" data-percentage="@ViewBag.count3" style="height: @ViewBag.count3%;"></div><span>@ViewBag.Day3</span></li>
+                    <li><div class="bar" data-percentage="@ViewBag.count2" style="height: @ViewBag.count2%;"></div><span>@ViewBag.Day2</span></li>
+                    <li><div class="bar" data-percentage="@ViewBag.count1" style="height: @ViewBag.count1%;"></div><span>@ViewBag.Day1</span></li>
+                </ul>
+            </div>*@
+            <!--chart end-->
+
+            <h5 style="margin-top: 50px; color: red; font-style: italic;">No Stock Products</h5>
+            <table class="table table-hover table-bordered">
+                <thead class="bg-success text-white">
+                    <tr>
+                        <th scope="col">S.no</th>
+                        <th scope="col">Product Id</th>
+                        <th scope="col">Product Category</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-dark text-white">
+                    @if (ViewBag.StockCheck != null)
+                    {
+                        int i = 1;
+                        foreach (var product in ViewBag.StockCheck)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>
+                                    <form action="SpecificProductOrders" method="post">
+                                        <select name="ProductId" style="display: none;"><option>@product["Id"]</option></select>
+                                        <button type="submit" style="border: white; background: none; font-weight: bold; font-style: italic; color: red;">@product["Id"]</button>
+                                    </form>
+                                </td>
+                                <td>@product["Category"]</td>
+                                <td>@product["Name"]</td>
+                                <td>@product["Price"]</td>
+                                <td>
+                                    <form method="post" action="EditProduct">
+                                        <select name="URL" style="display: none;"><option>@product["URL"]</option></select>
+                                        <button type="submit" style="border: none; background: none; font-weight: bold; font-style: italic; color: red;">Edit</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- Scrip Side -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
+
